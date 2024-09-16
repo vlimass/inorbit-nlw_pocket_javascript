@@ -4,11 +4,11 @@ import { Button } from './ui/button'
 import { InOrbitIcon } from './in-orbit-icon'
 import { Progress, ProgressIndicator } from './ui/progress-bar'
 import { Separator } from './ui/separator'
-import { OutlineButton } from './ui/outline-button'
 import { useQuery } from '@tanstack/react-query'
 import { getSummary } from '../http/get-summary'
 import dayjs from 'dayjs'
 import ptBR from 'dayjs/locale/pt-BR'
+import { PendingGoals } from './pending-goals'
 
 dayjs.locale(ptBR)
 
@@ -64,27 +64,7 @@ export function Summary() {
 
       <Separator />
 
-      <div className="flex flex-wrap gap-3">
-        <OutlineButton>
-          <Plus className="size-4 text-zinc-600" />
-          Meditar
-        </OutlineButton>
-
-        <OutlineButton>
-          <Plus className="size-4 text-zinc-600" />
-          Nadar
-        </OutlineButton>
-
-        <OutlineButton>
-          <Plus className="size-4 text-zinc-600" />
-          Praticar exercício
-        </OutlineButton>
-
-        <OutlineButton>
-          <Plus className="size-4 text-zinc-600" />
-          Dormir bem
-        </OutlineButton>
-      </div>
+      <PendingGoals />
 
       {Object.entries(data.goalsPerDay).map(([date, goals]) => {
         const weekDay = dayjs(date).format('dddd')
