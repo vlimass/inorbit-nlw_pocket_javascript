@@ -66,15 +66,14 @@ export function Summary() {
 
       <PendingGoals />
 
-      {Object.entries(data.goalsPerDay).map(([date, goals]) => {
-        const weekDay = dayjs(date).format('dddd')
-        const formattedDate = dayjs(date).format('D[ de ]MMMM')
+      <div className="flex flex-col gap-6">
+        <h2 className="text-xl font-medium">Sua semana</h2>
+        {Object.entries(data.goalsPerDay).map(([date, goals]) => {
+          const weekDay = dayjs(date).format('dddd')
+          const formattedDate = dayjs(date).format('D[ de ]MMMM')
 
-        return (
-          <div key={date} className="flex flex-col gap-6">
-            <h2 className="text-xl font-medium">Sua semana</h2>
-
-            <div className="flex flex-col gap-4">
+          return (
+            <div key={date} className="flex flex-col gap-4">
               <h3 className="font-medium">
                 <span className="capitalize">{weekDay}</span>{' '}
                 <span className="text-zinc-400 text-xs">({formattedDate})</span>
@@ -97,9 +96,9 @@ export function Summary() {
                 })}
               </ul>
             </div>
-          </div>
-        )
-      })}
+          )
+        })}
+      </div>
     </div>
   )
 }
